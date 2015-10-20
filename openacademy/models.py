@@ -176,3 +176,12 @@ class Session(models.Model):
                 raise exceptions.ValidationError("A session's instructor can't be an attendee")
 
 
+
+
+class Instructor(models.Model):
+    _name = 'openacademy.instructor'
+    
+    name = fields.Char(required=True)
+    instructor_id = fields.Many2one('res.partner', string="Instructor", 
+        domain=[('instructor', '=', True), ('category_id.name', 'ilike', "Teacher")])
+   

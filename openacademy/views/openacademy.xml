@@ -204,7 +204,7 @@
         </record>
 
 
-
+        <!-- kanban view -->
         <record model="ir.ui.view" id="view_openacad_session_kanban">
             <field name="name">openacad.session.kanban</field>
             <field name="model">openacademy.session</field>
@@ -253,6 +253,10 @@
 
 
 
+
+
+
+
         <record model="ir.actions.act_window" id="session_list_action">
             <field name="name">Sessions</field>
             <field name="res_model">openacademy.session</field>
@@ -267,6 +271,70 @@
                   action="session_list_action"/>
 
 
+
+
+
+
+<!-- 		EJERCICIO 1			 -->
+
+
+        <!-- instructor tree/list view -->
+        <record model="ir.ui.view" id="instructor_tree_view">
+            <field name="name">instructor.tree</field>
+            <field name="model">openacademy.instructor</field>
+            <field name="arch" type="xml">
+                <tree string="Instructor Tree" colors="#0000ff:duration&lt;5;red:duration&gt;15">
+                    <field name="name"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- instructor form view -->
+        <record model="ir.ui.view" id="instructor_form_view">
+            <field name="name">instructor.form</field>
+            <field name="model">openacademy.instructor</field>
+            <field name="arch" type="xml">
+                <form string="Instructor Form">
+                    <sheet>
+                        <group>
+                            <group string="General">
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="instructor_list_action">
+            <field name="name">Instructors</field>
+            <field name="res_model">openacademy.instructor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="instructor_menu" name="Instructors"
+                  parent="openacademy_menu"
+                  action="instructor_list_action"/>
+
+
+<!-- 		EJERCICIO 1			 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- WIZARD -->
 
         <record model="ir.ui.view" id="wizard_form_view">
             <field name="name">wizard.form</field>
