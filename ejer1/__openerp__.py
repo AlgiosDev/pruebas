@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 {
     'name': "Ejercicio 1",
 
@@ -20,10 +21,11 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'board', 'openacademy'],
+    'depends': ['base', 'openacademy'],
 
     # always loaded
     'data': [
+        'views/instructor.xml',  
         # 'security/ir.model.access.csv',
         #'security/security.xml',
         #'security/ir.model.access.csv',
@@ -33,9 +35,6 @@
         #'views/session_workflow.xml',
         #'views/session_board.xml',        
         #'reports.xml',
-    ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo.xml',
-    ],
+    ]
+    
 }
