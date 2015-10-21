@@ -26,6 +26,7 @@
     # always loaded
     'data': [
         'views/instructor.xml',  
+        'views/category.xml',
         # 'security/ir.model.access.csv',
         #'security/security.xml',
         #'security/ir.model.access.csv',
