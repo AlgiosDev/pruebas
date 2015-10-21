@@ -176,3 +176,5 @@ class Session(models.Model):
                 raise exceptions.ValidationError("A session's instructor can't be an attendee")
 
 
+
+

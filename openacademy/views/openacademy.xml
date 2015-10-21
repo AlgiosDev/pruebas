@@ -204,7 +204,7 @@
         </record>
 
 
-
+        <!-- kanban view -->
         <record model="ir.ui.view" id="view_openacad_session_kanban">
             <field name="name">openacad.session.kanban</field>
             <field name="model">openacademy.session</field>
@@ -253,6 +253,10 @@
 
 
 
+
+
+
+
         <record model="ir.actions.act_window" id="session_list_action">
             <field name="name">Sessions</field>
             <field name="res_model">openacademy.session</field>
@@ -267,6 +271,23 @@
                   action="session_list_action"/>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- WIZARD -->
 
         <record model="ir.ui.view" id="wizard_form_view">
             <field name="name">wizard.form</field>
