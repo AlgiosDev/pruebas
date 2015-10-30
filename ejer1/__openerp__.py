@@ -29,6 +29,7 @@
         'views/category.xml',
         'views/course.xml',
         'views/student.xml',
+        'views/sessionStudent.xml',
         # 'security/ir.model.access.csv',
         #'security/security.xml',
         #'security/ir.model.access.csv',
