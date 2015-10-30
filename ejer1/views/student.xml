@@ -1,0 +1,51 @@
+<openerp>
+	<data>
+
+		<!-- INVENTADA - Estudiantes con sus datos-->
+
+
+	
+      
+        <!-- student form view -->
+        <record model="ir.ui.view" id="student_form_view">
+            <field name="name">student.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="openacademy.partner_instructor_form_view" />
+            <field name="arch" type="xml">
+               <field name="instructor" position="after">
+                    <field name="student"/>
+                </field>
+            </field>
+        </record>
+        
+	   <!-- student tree/list view -->
+        <record model="ir.ui.view" id="student_tree_view">
+            <field name="name">student.tree</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree string="Instructor Tree">
+                    <field name="name"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+        
+        
+		
+
+
+		<record model="ir.actions.act_window" id="student_list_action">
+			<field name="name">Student</field>
+			<field name="res_model">res.partner</field>
+			<field name="domain">[('student', '=', True)]</field>
+			<field name="view_mode">form,tree</field>
+		</record>
+
+
+		<menuitem id="student_menu" name="Student"
+			parent="openacademy.openacademy_menu" action="student_list_action" />
+
+		<!-- INVENTADA -->
+
+	</data>
+</openerp>
