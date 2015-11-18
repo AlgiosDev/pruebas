@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="view_wc_backend_tree" model="ir.ui.view">
+			<field name="name">wc.backend.tree</field>
+			<field name="model">wc.backend</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<tree string="Backend">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_wc_backend_form" model="ir.ui.view">
+			<field name="name">wc.backend.form</field>
+			<field name="model">wc.backend</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<form string="Backend">
+					<header>
+						<button string="Check Connection" class="oe_highlight"
+							type="object" name="test_connection" />
+						<button name="synchronize_basedata" type="object" class="oe_highlight"
+							help="Synchonize datas like language, country, currency, tax"
+							string="Synchronize Base Data" />
+					</header>
+					<sheet>
+						<label string="Name" />
+						<h1>
+							<field name="name" required="1" />
+						</h1>
+						<separator string="Configuration" colspan="4" />
+						<group col="2">
+							<field name="location" required="1" />
+							<field name="consumer_key" required="1" />
+							<field name="consumer_secret" required="1" />
+							<field name="version" />
+							<field name="verify_ssl" />
+							<field name="default_lang_id" />
+						</group>
+						<notebook colspan="4">
+							<page string="Import Data">
+								<group>
+									<label string="Import Categories" class="oe_inline" />
+									<button name="import_categories" type="object" class="oe_highlight"
+										string="Import in background" />
+								</group>
+								<group>
+									<label string="Import Products" class="oe_inline" />
+									<button name="import_products" type="object" class="oe_highlight"
+										string="Import in background" />
+								</group>
+								<group>
+									<label string="Import Customers" class="oe_inline" />
+									<button name="import_customers" type="object" class="oe_highlight"
+										string="Import in background" />
+								</group>
+								<group>
+									<label string="Import Sale Orders" class="oe_inline" />
+									<button name="import_orders" type="object" class="oe_highlight"
+										string="Import in background" />
+								</group>
+								<group>
+									<label string="Import Payment Methods" class="oe_inline" />
+									<button name="import_payment_methods" type="object"
+										class="oe_highlight" string="Import in background" />
+								</group>
+								<group>
+									<label string="Import Shipping Methods" class="oe_inline" />
+									<button name="import_delivery_methods" type="object"
+										class="oe_highlight" string="Import in background" />
+								</group>
+							</page>
+							<page string="Export Data">
+								<group>
+									<label string="Update all the products stock quantities"
+										class="oe_inline" />
+									<button name="update_product_stock_qty" type="object"
+										class="oe_highlight" string="Update" />
+								</group>
+							</page>
+							<page name="advanced_configuration" string="Advanced Configuration">
+								<group>
+									<field name="product_stock_field_id" widget="selection"
+										domain="[('model', 'in', ['product.product', 'product.template']), 
+ 											('ttype', '=', 'float')]" />
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="act_open_wc_backend_view">
+			<field name="name">Backend</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">wc.backend</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+		</record>
+
+		<record model="ir.actions.act_window.view" id="act_open_wc_backend_view_form">
+			<field name="act_window_id" ref="act_open_wc_backend_view" />
+			<field name="sequence" eval="20" />
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_wc_backend_form" />
+		</record>
+
+		<record model="ir.actions.act_window.view" id="act_open_wc_backend_view_tree">
+			<field name="act_window_id" ref="act_open_wc_backend_view" />
+			<field name="sequence" eval="10" />
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_wc_backend_tree" />
+		</record>
+
+		<menuitem id="menu_wc_backend" parent="connector.menu_queue"
+			sequence="20" action="act_open_wc_backend_view" />
+
+		<record id="view_configuration_tree" model="ir.ui.view">
+			<field name="name">configuration.tree</field>
+			<field name="model">configuration</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<tree string="Configuration">
+					<field name="currency" />
+					<field name="currency_position" />
+					<field name="decimal_seperator" />
+					<field name="decimals" />
+					<field name="thousand_seperator" />
+					<field name="country" widget="many2many_tags" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_configuration_form" model="ir.ui.view">
+			<field name="name">configuration.form</field>
+			<field name="model">configuration</field>
+			<field name="type">form</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<form string="Configuration">
+					<sheet>
+						<group string="General Configuration">
+							<field name="currency" />
+							<field name="currency_position" />
+							<field name="decimal_seperator" />
+							<field name="decimals" />
+							<field name="thousand_seperator" />
+							<field name="country" widget="many2many_tags" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="act_configuration">
+			<field name="name">Configuration</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">configuration</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+		</record>
+
+		<menuitem id="menu_configuration" parent="connector.menu_queue"
+			sequence="20" action="act_configuration" />
+	</data>
+</openerp>
