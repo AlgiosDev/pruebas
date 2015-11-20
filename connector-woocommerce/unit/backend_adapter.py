@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 #
 #
-#    Tech-Receptives Solutions Pvt. Ltd.
-#    Copyright (C) 2009-TODAY Tech-Receptives(<http://www.techreceptives.com>).
+#    Author: Guewen Baconnier
+#    Copyright 2013 Camptocamp SA
+#    Copyright (C) 2009-TODAY Tech-Receptives(<http://www.techreceptives.com>)
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -174,6 +175,39 @@ class WooCRUDAdapter(CRUDAdapter):
                     (err.url, err.headers, err.errcode, err.errmsg))
             else:
                 raise
+
+    def _call_inventory(self, method, arguments):
+            _logger.debug("Start calling Woocommerce api %s", method)
+            api = API(url=self.woo.location,
+                      consumer_key=self.woo.consumer_key,
+                      consumer_secret=self.woo.consumer_secret,
+                      version='v2')
+            if method == 'product_qty_update':
+                if api:
+                    api_method = 'products/' + str(arguments[0])
+                    result_dict = {
+                        "product": {
+                            'stock_quantity': arguments[1]['qty']
+                        }
+                    }
+
+                    api.post(api_method, result_dict)
+
+    def _call_order_status(self, method, arguments):
+        _logger.debug("Start calling Woocommerce api %s", method)
+        api = API(url=self.woo.location,
+                  consumer_key=self.woo.consumer_key,
+                  consumer_secret=self.woo.consumer_secret,
+                  version='v2')
+        if method == 'order_status_update':
+            if api:
+                api_method = 'orders/' + str(arguments[0])
+                result_dict = {"order": {
+                    'status': arguments[1]['order_history']['id_order_state']
+                }
+                }
+
+                api.post(api_method, result_dict)
 
 
 class GenericAdapter(WooCRUDAdapter):

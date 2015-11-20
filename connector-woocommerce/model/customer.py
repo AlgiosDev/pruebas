@@ -89,7 +89,7 @@ class CustomerAdapter(GenericAdapter):
             filters.setdefault('updated_at', {})
             filters['updated_at']['to'] = to_date.strftime(dt_fmt)
         # the search method is on ol_customer instead of customer
-        return self._call('customers/list',
+        return self._call('customers/list?filter[limit]=9999',
                           [filters] if filters else [{}])
 
 
