@@ -31,6 +31,6 @@
           'view/payment_method_view.xml',
           ],
  'test': [],
- 'installable': False,
+ 'installable': True,
  'auto_install': True,
  }
