@@ -20,15 +20,16 @@
 #
 
 {
-    'name': 'WooCommerce Connector xxx',
+    'name': 'WooCommerce Connector Good',
     'version': '1.0',
     'category': 'customized',
-    'description': """WooCommerce Connectorxxx.""",
+    'description': """WooCommerce Connector.""",
     'author': 'Tech Receptives',
     'maintainer': 'OpenERP SA',
     'website': 'http://www.openerp.com',
     'depends': ['base', 'connector', 'connector_ecommerce',
                 "product_m2mcategories"],
+    'installable': True,
     'auto_install': False,
     'data': [
         "security/ir.model.access.csv",

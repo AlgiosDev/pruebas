@@ -19,25 +19,15 @@
 #
 #
 
-{
-    'name': 'WooCommerce Connector xxx',
-    'version': '1.0',
-    'category': 'customized',
-    'description': """WooCommerce Connectorxxx.""",
-    'author': 'Tech Receptives',
-    'maintainer': 'OpenERP SA',
-    'website': 'http://www.openerp.com',
-    'depends': ['base', 'connector', 'connector_ecommerce',
-                "product_m2mcategories"],
-    'auto_install': False,
-    'data': [
-        "security/ir.model.access.csv",
-        "views/backend_view.xml",
-    ],
-    'external_dependencies': {
-        'python': ['woocommerce'],
-    },
-    'js': [],
-    'application': True,
-    "sequence": 3,
-}
+from . import backend
+from . import product_category
+from . import product
+from . import customer
+from . import sale
+from . import product_attribute
+from . import product_combination
+from . import payment
+from . import delivery
+from . import order_status
+from . import res_currency
+from . import configuration

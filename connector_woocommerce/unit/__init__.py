@@ -19,25 +19,7 @@
 #
 #
 
-{
-    'name': 'WooCommerce Connector xxx',
-    'version': '1.0',
-    'category': 'customized',
-    'description': """WooCommerce Connectorxxx.""",
-    'author': 'Tech Receptives',
-    'maintainer': 'OpenERP SA',
-    'website': 'http://www.openerp.com',
-    'depends': ['base', 'connector', 'connector_ecommerce',
-                "product_m2mcategories"],
-    'auto_install': False,
-    'data': [
-        "security/ir.model.access.csv",
-        "views/backend_view.xml",
-    ],
-    'external_dependencies': {
-        'python': ['woocommerce'],
-    },
-    'js': [],
-    'application': True,
-    "sequence": 3,
-}
+from . import import_synchronizer
+from . import backend_adapter
+from . import mapper
+from . import binder
